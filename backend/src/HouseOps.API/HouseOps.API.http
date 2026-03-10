@@ -1,0 +1,6 @@
+@HouseOps.API_HostAddress = http://localhost:5017
+
+GET {{HouseOps.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
