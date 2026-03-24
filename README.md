@@ -73,23 +73,31 @@ cd house-ops
 ```
 
 ### 2. Configurar Banco de Dados
-```bash
-# Opção 1: Docker (recomendado)
-docker run --name house-ops-postgres \
-  -e POSTGRES_DB=house_ops \
-  -e POSTGRES_USER=postgres \
-  -e POSTGRES_PASSWORD=password \
-  -p 5432:5432 \
-  -d postgres:15
+O projeto utiliza Docker Compose para gerenciar o PostgreSQL.
 
-# Opção 2: PostgreSQL local
-# Criar banco "house_ops" manualmente
+```bash
+# Iniciar o banco de dados (e opcionalmente backend/frontend)
+docker-compose up -d db
+```
+O banco será criado automaticamente com o nome `houseops_db`.
+
+### 3. Banco de Dados e Migrações
+Sempre execute estes comandos a partir da pasta `backend`:
+
+#### Cenário A: Primeira Execução ou Alteração no Modelo (Entidades)
+Se você alterou as classes de domínio ou é a primeira vez rodando o projeto com o banco limpo:
+```bash
+# Adicionar uma nova migração (substitua <Nome> conforme necessário)
+dotnet ef migrations add <Nome> --project src/HouseOps.Infrastructure --startup-project src/HouseOps.API
+
+# Aplicar ao banco de dados
+dotnet ef database update --project src/HouseOps.Infrastructure --startup-project src/HouseOps.API
 ```
 
-### 3. Rodar Migrations
+#### Cenário B: Apenas Sincronizar (Configuração Inicial ou Pull de Código)
+Se as migrações já existem no projeto e o banco está rodando, mas vazio:
 ```bash
-cd backend/src/HouseOps.API
-dotnet ef database update --project ../HouseOps.Infrastructure
+dotnet ef database update --project src/HouseOps.Infrastructure --startup-project src/HouseOps.API
 ```
 
 ### 4. Iniciar Backend
