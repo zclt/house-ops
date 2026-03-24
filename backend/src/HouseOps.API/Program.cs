@@ -23,7 +23,7 @@ builder.Services.AddCors(options =>
 
 // Database configuration
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") 
-    ?? "Host=localhost;Database=house_ops;Username=postgres;Password=password";
+    ?? "Host=localhost;Database=houseops_db;Username=user;Password=password";
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString));

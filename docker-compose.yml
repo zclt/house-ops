@@ -1,4 +1,18 @@
 services:
+  db:
+    image: postgres:17-alpine
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=houseops_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - house-ops-network
+
   backend:
     build:
       context: ./backend
@@ -10,6 +24,8 @@ services:
       - AllowedOrigins=http://localhost:3000
     networks:
       - house-ops-network
+    depends_on:
+      - db
 
   frontend:
     build:
@@ -27,3 +43,6 @@ services:
 networks:
   house-ops-network:
     driver: bridge
+
+volumes:
+  postgres_data:
