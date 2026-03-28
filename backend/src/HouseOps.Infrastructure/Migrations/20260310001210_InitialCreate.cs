@@ -16,11 +16,11 @@ namespace HouseOps.Infrastructure.Migrations
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false),
-                    data_compra = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    data_compra = table.Column<DateTime>(type: "timestamp", nullable: false),
                     valor_total = table.Column<decimal>(type: "numeric(10,2)", precision: 10, scale: 2, nullable: false),
                     mercado = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
-                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    created_at = table.Column<DateTime>(type: "timestamp", nullable: false),
+                    updated_at = table.Column<DateTime>(type: "timestamp", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -37,8 +37,8 @@ namespace HouseOps.Infrastructure.Migrations
                     valor_unitario = table.Column<decimal>(type: "numeric(10,2)", precision: 10, scale: 2, nullable: false),
                     categoria = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     compra_id = table.Column<Guid>(type: "uuid", nullable: false),
-                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    created_at = table.Column<DateTime>(type: "timestamp", nullable: false),
+                    updated_at = table.Column<DateTime>(type: "timestamp", nullable: false)
                 },
                 constraints: table =>
                 {

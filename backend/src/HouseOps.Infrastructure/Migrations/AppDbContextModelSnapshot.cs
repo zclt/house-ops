@@ -30,11 +30,11 @@ namespace HouseOps.Infrastructure.Migrations
                         .HasColumnName("id");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp")
                         .HasColumnName("created_at");
 
                     b.Property<DateTime>("DataCompra")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp")
                         .HasColumnName("data_compra");
 
                     b.Property<string>("Mercado")
@@ -44,7 +44,7 @@ namespace HouseOps.Infrastructure.Migrations
                         .HasColumnName("mercado");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp")
                         .HasColumnName("updated_at");
 
                     b.Property<decimal>("ValorTotal")
@@ -75,7 +75,7 @@ namespace HouseOps.Infrastructure.Migrations
                         .HasColumnName("compra_id");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp")
                         .HasColumnName("created_at");
 
                     b.Property<string>("Nome")
@@ -89,7 +89,7 @@ namespace HouseOps.Infrastructure.Migrations
                         .HasColumnName("quantidade");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp")
                         .HasColumnName("updated_at");
 
                     b.Property<decimal>("ValorUnitario")

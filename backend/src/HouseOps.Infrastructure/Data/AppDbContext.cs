@@ -28,6 +28,7 @@ public class AppDbContext : DbContext
                 
             entity.Property(e => e.DataCompra)
                 .HasColumnName("data_compra")
+                .HasColumnType("timestamp")
                 .IsRequired();
                 
             entity.Property(e => e.ValorTotal)
@@ -42,10 +43,12 @@ public class AppDbContext : DbContext
                 
             entity.Property(e => e.CreatedAt)
                 .HasColumnName("created_at")
+                .HasColumnType("timestamp")
                 .IsRequired();
                 
             entity.Property(e => e.UpdatedAt)
                 .HasColumnName("updated_at")
+                .HasColumnType("timestamp")
                 .IsRequired();
         });
 
@@ -84,10 +87,12 @@ public class AppDbContext : DbContext
                 
             entity.Property(e => e.CreatedAt)
                 .HasColumnName("created_at")
+                .HasColumnType("timestamp")
                 .IsRequired();
                 
             entity.Property(e => e.UpdatedAt)
                 .HasColumnName("updated_at")
+                .HasColumnType("timestamp")
                 .IsRequired();
             
             // Relacionamento
