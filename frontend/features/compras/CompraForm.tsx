@@ -51,19 +51,29 @@ export default function CompraForm({ onSuccess }: CompraFormProps) {
   };
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-6">
-      <h2 className="text-xl font-semibold text-gray-800 mb-6">Nova Compra</h2>
+    <div className="p-4">
+      <div className="flex items-center gap-3 mb-6">
+        <div className="p-2 bg-red-600/20 rounded-lg">
+          <svg className="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
+          </svg>
+        </div>
+        <h2 className="text-xl font-bold text-white tracking-tight">Nova Compra</h2>
+      </div>
       
       {error && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+        <div className="bg-red-500/10 border border-red-500/20 text-red-400 px-4 py-3 rounded-xl mb-6 text-sm flex items-center gap-3">
+          <svg className="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
           {error}
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label htmlFor="dataCompra" className="block text-sm font-medium text-gray-700 mb-2">
-            Data da Compra
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="space-y-2">
+          <label htmlFor="dataCompra" className="block text-xs font-semibold text-zinc-500 uppercase tracking-widest ml-1">
+            Data da Operação
           </label>
           <input
             type="date"
@@ -71,14 +81,14 @@ export default function CompraForm({ onSuccess }: CompraFormProps) {
             name="dataCompra"
             value={formData.dataCompra}
             onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-4 py-3 bg-black border border-zinc-800 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-red-600/50 focus:border-red-600 transition-all font-medium"
             required
           />
         </div>
 
-        <div>
-          <label htmlFor="mercado" className="block text-sm font-medium text-gray-700 mb-2">
-            Mercado
+        <div className="space-y-2">
+          <label htmlFor="mercado" className="block text-xs font-semibold text-zinc-500 uppercase tracking-widest ml-1">
+            Estabelecimento
           </label>
           <input
             type="text"
@@ -87,20 +97,27 @@ export default function CompraForm({ onSuccess }: CompraFormProps) {
             value={formData.mercado}
             onChange={handleChange}
             placeholder="Ex: Carrefour, Pão de Açúcar..."
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-4 py-3 bg-black border border-zinc-800 rounded-xl text-white placeholder:text-zinc-700 focus:outline-none focus:ring-2 focus:ring-red-600/50 focus:border-red-600 transition-all font-medium"
             required
           />
         </div>
 
-        <div className="flex justify-end">
-          <button
-            type="submit"
-            disabled={loading}
-            className="px-6 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {loading ? 'Salvando...' : 'Salvar Compra'}
-          </button>
-        </div>
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full btn-primary flex items-center justify-center gap-2 group py-4 h-14"
+        >
+          {loading ? (
+            <div className="h-5 w-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+          ) : (
+            <>
+              <span className="text-base uppercase tracking-widest font-black">Iniciar Registro</span>
+              <svg className="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </>
+          )}
+        </button>
       </form>
     </div>
   );
