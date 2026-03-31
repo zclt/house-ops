@@ -3,12 +3,14 @@
 import { useState, useEffect } from 'react';
 import { apiService, Compra } from '@/services/api';
 import ItemModal from './ItemModal';
+import ConfirmModal from '@/components/ConfirmModal';
 
 export default function CompraList() {
   const [compras, setCompras] = useState<Compra[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedCompra, setSelectedCompra] = useState<Compra | null>(null);
+  const [compraToDelete, setCompraToDelete] = useState<string | null>(null);
 
   useEffect(() => {
     loadCompras();
@@ -26,14 +28,13 @@ export default function CompraList() {
     }
   };
 
-  const handleDelete = async (id: string) => {
-    if (!confirm('Tem certeza que deseja excluir esta compra?')) {
-      return;
-    }
+  const handleDelete = async () => {
+    if (!compraToDelete) return;
 
     try {
-      await apiService.deleteCompra(id);
-      setCompras(compras.filter(c => c.id !== id));
+      await apiService.deleteCompra(compraToDelete);
+      setCompras(compras.filter(c => c.id !== compraToDelete));
+      setCompraToDelete(null);
     } catch (err) {
       setError('Erro ao excluir compra');
     }
@@ -136,7 +137,7 @@ export default function CompraList() {
                         Gerenciar Itens
                       </button>
                       <button
-                        onClick={() => handleDelete(compra.id)}
+                        onClick={() => setCompraToDelete(compra.id)}
                         className="text-red-600 hover:text-red-900 transition"
                       >
                         Excluir
@@ -149,6 +150,16 @@ export default function CompraList() {
           </div>
         )}
       </div>
+
+      <ConfirmModal
+        isOpen={!!compraToDelete}
+        title="Excluir Compra"
+        message="Tem certeza que deseja excluir esta compra? Esta ação não pode ser desfeita e removerá todos os itens vinculados."
+        onConfirm={handleDelete}
+        onCancel={() => setCompraToDelete(null)}
+        confirmText="Excluir"
+        cancelText="Cancelar"
+      />
 
       {selectedCompra && (
         <ItemModal 

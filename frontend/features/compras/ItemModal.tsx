@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { apiService, Item, Compra } from '@/services/api';
 import ItemForm from './ItemForm';
+import ConfirmModal from '@/components/ConfirmModal';
 
 interface ItemModalProps {
   compra: Compra;
@@ -14,6 +15,7 @@ export default function ItemModal({ compra, onClose, onUpdate }: ItemModalProps)
   const [items, setItems] = useState<Item[]>(compra.itens || []);
   const [showForm, setShowForm] = useState(false);
   const [editingItem, setEditingItem] = useState<Item | undefined>(undefined);
+  const [itemToDelete, setItemToDelete] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -30,11 +32,12 @@ export default function ItemModal({ compra, onClose, onUpdate }: ItemModalProps)
     }
   };
 
-  const handleDelete = async (id: string) => {
-    if (!confirm('Tem certeza que deseja excluir este item?')) return;
+  const handleDelete = async () => {
+    if (!itemToDelete) return;
     
     try {
-      await apiService.deleteItem(id);
+      await apiService.deleteItem(itemToDelete);
+      setItemToDelete(null);
       await loadItems();
     } catch (err) {
       setError('Erro ao excluir item');
@@ -151,7 +154,7 @@ export default function ItemModal({ compra, onClose, onUpdate }: ItemModalProps)
                               Editar
                             </button>
                             <button
-                              onClick={() => handleDelete(item.id)}
+                              onClick={() => setItemToDelete(item.id)}
                               className="text-red-600 hover:text-red-900"
                             >
                               Excluir
@@ -176,6 +179,16 @@ export default function ItemModal({ compra, onClose, onUpdate }: ItemModalProps)
           )}
         </div>
       </div>
+
+      <ConfirmModal
+        isOpen={!!itemToDelete}
+        title="Excluir Item"
+        message="Tem certeza que deseja excluir este item da lista?"
+        onConfirm={handleDelete}
+        onCancel={() => setItemToDelete(null)}
+        confirmText="Excluir"
+        cancelText="Cancelar"
+      />
     </div>
   );
 }

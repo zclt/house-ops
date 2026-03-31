@@ -45,7 +45,10 @@ public class CompraRepository : ICompraRepository
 
     public async Task<bool> DeleteAsync(Guid id)
     {
-        var compra = await _context.Compras.FindAsync(id);
+        var compra = await _context.Compras
+            .Include(c => c.Itens)
+            .FirstOrDefaultAsync(c => c.Id == id);
+            
         if (compra == null)
             return false;
 

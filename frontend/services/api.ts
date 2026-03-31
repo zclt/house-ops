@@ -49,7 +49,8 @@ class ApiService {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    return response.json();
+    const text = await response.text();
+    return text ? JSON.parse(text) : {} as T;
   }
 
   // Compras
