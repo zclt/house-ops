@@ -88,6 +88,35 @@ class ApiService {
   async getComprasByMercado(mercado: string): Promise<Compra[]> {
     return this.request<Compra[]>(`/compras/mercado/${mercado}`);
   }
+
+  // Itens
+  async getItemsByCompra(compraId: string): Promise<Item[]> {
+    return this.request<Item[]>(`/items/compra/${compraId}`);
+  }
+
+  async getItem(id: string): Promise<Item> {
+    return this.request<Item>(`/items/${id}`);
+  }
+
+  async createItem(data: { nome: string; quantidade: number; valorUnitario: number; categoria: string; compraId: string }): Promise<Item> {
+    return this.request<Item>('/items', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
+  }
+
+  async updateItem(id: string, data: { nome: string; quantidade: number; valorUnitario: number; categoria: string }): Promise<Item> {
+    return this.request<Item>(`/items/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    });
+  }
+
+  async deleteItem(id: string): Promise<void> {
+    await this.request(`/items/${id}`, {
+      method: 'DELETE',
+    });
+  }
 }
 
 export const apiService = new ApiService();

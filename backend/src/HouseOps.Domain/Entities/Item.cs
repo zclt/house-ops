@@ -12,13 +12,14 @@ public class Item
     public DateTime CreatedAt { get; private set; }
     public DateTime UpdatedAt { get; private set; }
 
-    public Item(string nome, int quantidade, decimal valorUnitario, string categoria)
+    public Item(string nome, int quantidade, decimal valorUnitario, string categoria, Guid compraId)
     {
         Id = Guid.NewGuid();
         Nome = nome;
         Quantidade = quantidade;
         ValorUnitario = valorUnitario;
         Categoria = categoria;
+        CompraId = compraId;
         CreatedAt = DateTime.UtcNow;
         UpdatedAt = DateTime.UtcNow;
     }
