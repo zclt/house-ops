@@ -12,7 +12,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-900 via-black to-black">
+    <main className="min-h-screen">
       <div className="container mx-auto px-4 py-12 max-w-7xl">
         <header className="mb-12 relative">
           <div className="absolute -top-10 -left-10 w-40 h-40 bg-red-600/10 blur-[100px] rounded-full"></div>

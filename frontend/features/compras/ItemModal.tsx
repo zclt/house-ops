@@ -58,8 +58,8 @@ export default function ItemModal({ compra, onClose, onUpdate }: ItemModalProps)
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-300">
-      <div className="bg-[#0a0a0a] rounded-3xl border border-zinc-800 shadow-[0_0_50px_rgba(0,0,0,0.5)] w-full max-w-5xl max-h-[90vh] flex flex-col overflow-hidden transform transition-all animate-in zoom-in-95 duration-300">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/30 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-300">
+      <div className="bg-zinc-900/40 backdrop-blur-2xl rounded-3xl border border-zinc-500/20 shadow-[0_0_50px_rgba(0,0,0,0.3)] w-full max-w-5xl max-h-[90vh] flex flex-col overflow-hidden transform transition-all animate-in zoom-in-95 duration-300">
         {/* Header */}
         <div className="px-8 py-6 bg-gradient-to-r from-zinc-900 to-black border-b border-zinc-800 flex justify-between items-center">
           <div className="flex items-center gap-4">

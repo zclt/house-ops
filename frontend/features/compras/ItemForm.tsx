@@ -81,7 +81,7 @@ export default function ItemForm({ compraId, item, onSuccess, onCancel }: ItemFo
             value={nome}
             onChange={(e) => setNome(e.target.value)}
             required
-            className="w-full px-4 py-3 bg-black border border-zinc-800 rounded-xl text-white placeholder:text-zinc-700 focus:outline-none focus:ring-2 focus:ring-red-600/50 focus:border-red-600 transition-all font-medium"
+            className="w-full px-4 py-3 bg-black/20 backdrop-blur-sm border border-zinc-800 focus:border-red-500/50 rounded-xl text-white placeholder:text-zinc-700 focus:outline-none transition-all font-medium"
             placeholder="Ex: Arroz Integral 5kg"
           />
         </div>
@@ -97,7 +97,7 @@ export default function ItemForm({ compraId, item, onSuccess, onCancel }: ItemFo
             onChange={(e) => setQuantidade(parseInt(e.target.value))}
             min="1"
             required
-            className="w-full px-4 py-3 bg-black border border-zinc-800 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-red-600/50 focus:border-red-600 transition-all font-medium font-mono"
+            className="w-full px-4 py-3 bg-black/20 backdrop-blur-sm border border-zinc-800 focus:border-red-500/50 rounded-xl text-white focus:outline-none transition-all font-medium font-mono"
           />
         </div>
 
@@ -113,7 +113,7 @@ export default function ItemForm({ compraId, item, onSuccess, onCancel }: ItemFo
             step="0.01"
             min="0"
             required
-            className="w-full px-4 py-3 bg-black border border-zinc-800 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-red-600/50 focus:border-red-600 transition-all font-medium font-mono"
+            className="w-full px-4 py-3 bg-black/20 backdrop-blur-sm border border-zinc-800 focus:border-red-500/50 rounded-xl text-white focus:outline-none transition-all font-medium font-mono"
           />
         </div>
 
@@ -127,7 +127,7 @@ export default function ItemForm({ compraId, item, onSuccess, onCancel }: ItemFo
             value={categoria}
             onChange={(e) => setCategoria(e.target.value)}
             required
-            className="w-full px-4 py-3 bg-black border border-zinc-800 rounded-xl text-white placeholder:text-zinc-700 focus:outline-none focus:ring-2 focus:ring-red-600/50 focus:border-red-600 transition-all font-medium"
+            className="w-full px-4 py-3 bg-black/20 backdrop-blur-sm border border-zinc-800 focus:border-red-500/50 rounded-xl text-white placeholder:text-zinc-700 focus:outline-none transition-all font-medium"
             placeholder="Ex: Mantimentos, Higiene, Frios..."
           />
         </div>

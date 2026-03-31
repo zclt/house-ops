@@ -81,7 +81,7 @@ export default function CompraForm({ onSuccess }: CompraFormProps) {
             name="dataCompra"
             value={formData.dataCompra}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-black border border-zinc-800 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-red-600/50 focus:border-red-600 transition-all font-medium"
+            className="w-full px-4 py-3 bg-black/20 backdrop-blur-sm border border-zinc-800 focus:border-red-500/50 rounded-xl text-white focus:outline-none transition-all font-medium"
             required
           />
         </div>
@@ -97,7 +97,7 @@ export default function CompraForm({ onSuccess }: CompraFormProps) {
             value={formData.mercado}
             onChange={handleChange}
             placeholder="Ex: Carrefour, Pão de Açúcar..."
-            className="w-full px-4 py-3 bg-black border border-zinc-800 rounded-xl text-white placeholder:text-zinc-700 focus:outline-none focus:ring-2 focus:ring-red-600/50 focus:border-red-600 transition-all font-medium"
+            className="w-full px-4 py-3 bg-black/20 backdrop-blur-sm border border-zinc-800 focus:border-red-500/50 rounded-xl text-white placeholder:text-zinc-700 focus:outline-none transition-all font-medium"
             required
           />
         </div>

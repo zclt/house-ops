@@ -62,8 +62,8 @@ export default function ConfirmModal({
   const config = typeConfig[type];
 
   return (
-    <div className="fixed inset-0 z-[100] overflow-y-auto bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-300">
-      <div className="bg-[#0a0a0a] rounded-3xl border border-zinc-800 shadow-[0_0_50px_rgba(0,0,0,1)] w-full max-w-md overflow-hidden transform transition-all animate-in zoom-in-95 duration-300">
+    <div className="fixed inset-0 z-[100] overflow-y-auto bg-black/40 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-300">
+      <div className="bg-zinc-900/60 backdrop-blur-xl rounded-3xl border border-zinc-500/20 shadow-[0_0_50px_rgba(0,0,0,0.3)] w-full max-w-md overflow-hidden transform transition-all animate-in zoom-in-95 duration-300">
         <div className="p-8">
           <div className="flex flex-col items-center text-center gap-6">
             <div className={`p-5 rounded-full bg-red-600/10 border border-red-600/20 shadow-[0_0_20px_rgba(255,0,51,0.1)]`}>
