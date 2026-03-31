@@ -90,13 +90,7 @@ public class ItemService
         var compra = await _compraRepository.GetByIdAsync(compraId);
         if (compra != null)
         {
-            // A entidade Compra tem o método CalcularValorTotal que é chamado internamente
-            // quando adicionamos/removemos itens via métodos da entidade.
-            // Se estivermos manipulando Itens diretamente no banco, precisamos forçar o recalculo.
-            
-            // Uma abordagem melhor seria carregar a compra com os itens e deixar o domínio recalcular.
-            // Mas para simplicidade agora, vamos assumir que o repositório carrega os itens.
-            
+            compra.RecalcularValorTotal();
             await _compraRepository.UpdateAsync(compra);
         }
     }

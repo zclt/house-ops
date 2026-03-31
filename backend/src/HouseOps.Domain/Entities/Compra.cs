@@ -35,6 +35,12 @@ public class Compra
         UpdatedAt = DateTime.UtcNow;
     }
 
+    public void RecalcularValorTotal()
+    {
+        CalcularValorTotal();
+        UpdatedAt = DateTime.UtcNow;
+    }
+
     private void CalcularValorTotal()
     {
         ValorTotal = _itens.Sum(i => i.ValorTotal);
