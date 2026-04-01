@@ -32,9 +32,11 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 // Register repositories
 builder.Services.AddScoped<ICompraRepository, CompraRepository>();
+builder.Services.AddScoped<IItemRepository, ItemRepository>();
 
 // Register services
 builder.Services.AddScoped<CompraService>();
+builder.Services.AddScoped<ItemService>();
 
 var app = builder.Build();
 

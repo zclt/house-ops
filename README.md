@@ -163,7 +163,7 @@ npm test
 
 ## 📝 Próximos Passos
 
-- [ ] Implementar CRUD de Itens
+- [x] Implementar CRUD de Itens
 - [ ] Adicionar validações no frontend
 - [ ] Criar dashboard de gastos
 - [ ] Implementar filtros avançados
