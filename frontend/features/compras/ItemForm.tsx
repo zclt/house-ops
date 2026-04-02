@@ -49,21 +49,31 @@ export default function ItemForm({ compraId, item, onSuccess, onCancel }: ItemFo
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 bg-gray-50 p-4 rounded-lg border border-gray-200">
-      <h3 className="text-lg font-medium text-gray-900">
-        {item ? 'Editar Item' : 'Adicionar Novo Item'}
-      </h3>
+    <form onSubmit={handleSubmit} className="space-y-8 bg-zinc-900/50 p-8 rounded-3xl border border-zinc-800 animate-in slide-in-from-bottom-2">
+      <div className="flex items-center gap-3">
+        <div className="p-2 bg-red-600/20 rounded-lg">
+          <svg className="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+          </svg>
+        </div>
+        <h3 className="text-xl font-bold text-white tracking-tight">
+          {item ? 'Editar Informações' : 'Novo Produto'}
+        </h3>
+      </div>
       
       {error && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-3 py-2 rounded text-sm">
+        <div className="bg-red-500/10 border border-red-500/20 text-red-400 px-4 py-3 rounded-xl text-sm flex items-center gap-3">
+          <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
           {error}
         </div>
       )}
 
-      <div className="grid grid-cols-2 gap-4">
-        <div className="col-span-2">
-          <label htmlFor="nome" className="block text-sm font-medium text-gray-700 mb-1">
-            Nome do Item
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="md:col-span-2 space-y-2">
+          <label htmlFor="nome" className="block text-xs font-semibold text-zinc-500 uppercase tracking-widest ml-1">
+            Descrição do Produto
           </label>
           <input
             type="text"
@@ -71,13 +81,13 @@ export default function ItemForm({ compraId, item, onSuccess, onCancel }: ItemFo
             value={nome}
             onChange={(e) => setNome(e.target.value)}
             required
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Ex: Arroz 5kg"
+            className="w-full px-4 py-3 bg-black/20 backdrop-blur-sm border border-zinc-800 focus:border-red-500/50 rounded-xl text-white placeholder:text-zinc-700 focus:outline-none transition-all font-medium"
+            placeholder="Ex: Arroz Integral 5kg"
           />
         </div>
 
-        <div>
-          <label htmlFor="quantidade" className="block text-sm font-medium text-gray-700 mb-1">
+        <div className="space-y-2">
+          <label htmlFor="quantidade" className="block text-xs font-semibold text-zinc-500 uppercase tracking-widest ml-1">
             Quantidade
           </label>
           <input
@@ -87,13 +97,13 @@ export default function ItemForm({ compraId, item, onSuccess, onCancel }: ItemFo
             onChange={(e) => setQuantidade(parseInt(e.target.value))}
             min="1"
             required
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-3 bg-black/20 backdrop-blur-sm border border-zinc-800 focus:border-red-500/50 rounded-xl text-white focus:outline-none transition-all font-medium font-mono"
           />
         </div>
 
-        <div>
-          <label htmlFor="valorUnitario" className="block text-sm font-medium text-gray-700 mb-1">
-            Valor Unitário (R$)
+        <div className="space-y-2">
+          <label htmlFor="valorUnitario" className="block text-xs font-semibold text-zinc-500 uppercase tracking-widest ml-1">
+            Preço Unitário (R$)
           </label>
           <input
             type="number"
@@ -103,13 +113,13 @@ export default function ItemForm({ compraId, item, onSuccess, onCancel }: ItemFo
             step="0.01"
             min="0"
             required
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-3 bg-black/20 backdrop-blur-sm border border-zinc-800 focus:border-red-500/50 rounded-xl text-white focus:outline-none transition-all font-medium font-mono"
           />
         </div>
 
-        <div className="col-span-2">
-          <label htmlFor="categoria" className="block text-sm font-medium text-gray-700 mb-1">
-            Categoria
+        <div className="md:col-span-2 space-y-2">
+          <label htmlFor="categoria" className="block text-xs font-semibold text-zinc-500 uppercase tracking-widest ml-1">
+            Categoria / Setor
           </label>
           <input
             type="text"
@@ -117,27 +127,31 @@ export default function ItemForm({ compraId, item, onSuccess, onCancel }: ItemFo
             value={categoria}
             onChange={(e) => setCategoria(e.target.value)}
             required
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Ex: Mercearia, Limpeza..."
+            className="w-full px-4 py-3 bg-black/20 backdrop-blur-sm border border-zinc-800 focus:border-red-500/50 rounded-xl text-white placeholder:text-zinc-700 focus:outline-none transition-all font-medium"
+            placeholder="Ex: Mantimentos, Higiene, Frios..."
           />
         </div>
       </div>
 
-      <div className="flex justify-end gap-3 pt-2">
+      <div className="flex flex-col-reverse md:flex-row justify-end gap-4 pt-4">
         <button
           type="button"
           onClick={onCancel}
           disabled={loading}
-          className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none"
+          className="px-8 py-3 text-sm font-bold text-zinc-400 hover:text-white hover:bg-zinc-800 rounded-xl transition-all border border-transparent hover:border-zinc-700 uppercase tracking-widest"
         >
-          Cancelar
+          Descartar
         </button>
         <button
           type="submit"
           disabled={loading}
-          className="px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 focus:outline-none disabled:bg-blue-300"
+          className="btn-primary min-w-[200px]"
         >
-          {loading ? 'Salvando...' : 'Salvar Item'}
+          {loading ? (
+            <div className="h-5 w-5 border-2 border-white/30 border-t-white rounded-full animate-spin mx-auto"></div>
+          ) : (
+            <span className="uppercase tracking-widest">Confirmar Dados</span>
+          )}
         </button>
       </div>
     </form>

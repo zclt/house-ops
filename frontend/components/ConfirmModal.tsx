@@ -62,38 +62,38 @@ export default function ConfirmModal({
   const config = typeConfig[type];
 
   return (
-    <div className="fixed inset-0 z-[100] overflow-y-auto bg-black bg-opacity-40 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden transform transition-all animate-in zoom-in-95 duration-200">
-        <div className="p-6">
-          <div className="flex items-start gap-4">
-            <div className={`p-3 rounded-full ${config.light}`}>
+    <div className="fixed inset-0 z-[100] overflow-y-auto bg-black/40 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-300">
+      <div className="bg-zinc-900/60 backdrop-blur-xl rounded-3xl border border-zinc-500/20 shadow-[0_0_50px_rgba(0,0,0,0.3)] w-full max-w-md overflow-hidden transform transition-all animate-in zoom-in-95 duration-300">
+        <div className="p-8">
+          <div className="flex flex-col items-center text-center gap-6">
+            <div className={`p-5 rounded-full bg-red-600/10 border border-red-600/20 shadow-[0_0_20px_rgba(255,0,51,0.1)]`}>
               {config.icon}
             </div>
-            <div className="flex-1">
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
+            <div className="space-y-3">
+              <h3 className="text-2xl font-black text-white tracking-tighter uppercase">
                 {title}
               </h3>
-              <p className="text-gray-600 leading-relaxed text-sm">
+              <p className="text-zinc-400 leading-relaxed font-medium">
                 {message}
               </p>
             </div>
           </div>
         </div>
         
-        <div className="px-6 py-4 bg-gray-50 flex flex-col-reverse sm:flex-row justify-end gap-3">
-          <button
-            type="button"
-            onClick={onCancel}
-            className="w-full sm:w-auto px-6 py-2.5 text-sm font-semibold text-gray-700 bg-white border border-gray-300 rounded-xl hover:bg-gray-100 transition focus:outline-none focus:ring-2 focus:ring-gray-200"
-          >
-            {cancelText}
-          </button>
+        <div className="px-8 py-6 bg-zinc-900/50 border-t border-zinc-800 flex flex-col gap-3">
           <button
             type="button"
             onClick={onConfirm}
-            className={`w-full sm:w-auto px-6 py-2.5 text-sm font-semibold text-white ${config.bg} ${config.hover} rounded-xl shadow-lg transition transform active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 ring-offset-white`}
+            className="w-full btn-primary h-14 flex items-center justify-center"
           >
-            {confirmText}
+            <span className="uppercase tracking-widest font-black">{confirmText}</span>
+          </button>
+          <button
+            type="button"
+            onClick={onCancel}
+            className="w-full px-6 py-4 text-sm font-bold text-zinc-500 hover:text-white transition-all uppercase tracking-widest"
+          >
+            {cancelText}
           </button>
         </div>
       </div>
